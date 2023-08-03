@@ -130,19 +130,21 @@ M205 S0 T0 ; sets the minimum extruding and travel feed rate, mm/sec
 M862.3 P "MINI" ; printer model check
 G90 ; use absolute coordinates
 M83 ; extruder relative mode
-M104 S170 ; set extruder temp for bed leveling
+M104 S225 ; set extruder temp for bed leveling
 M140 S60 ; set bed temp
-M109 R170 ; wait for bed leveling temp
+M109 R225 ; wait for bed leveling temp
 M190 S60 ; wait for bed temp
 M204 T1250 ; set travel acceleration
 G28 ; home all without mesh bed level
-G29 ; mesh bed leveling 
+; https://www.reddit.com/r/Ender3Pro/comments/ma2hu8/is_g29_mandatory_before_every_print_with_a_bltouch/
+M420 S1
+; G29 ; mesh bed leveling 
 M204 T2500 ; restore travel acceleration
-M104 S225 ; set extruder temp
+; M104 S225 ; set extruder temp
 G92 E0
 G1 Y-2 X179 F2400
 G1 Z3 F720
-M109 S225 ; wait for extruder temp
+; M109 S225 ; wait for extruder temp
 
 ; intro line
 G1 X170 F1000
